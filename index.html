@@ -3,7 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <title>OUR — Origin Sign</title>
+<h2>Kandidaten · 3</h2>
+<p>Wer spielt? Wer bist du? Was ist dein Core?</p>
+<p>Hier beginnt das Spiel des Lebens.</p>
 
+<h2>Spiel · 9</h2>
+<p>Das Leben ist ein Spiel. Die Struktur ist das Spielfeld.</p>
+<p>Hier legst du fest, wie du deine Stadt nutzt.</p>
+
+    <h2>Nirwana · 756</h2>
+<p>Das Klima des Lebens. Die große Richtung. Der Überraum.</p>
+<p>Hier entscheidet sich, wohin dein Leben langfristig fließt.</p>
+
+    <h2>Houston Problem · 81</h2>
+<p>Der Lebensraum meldet eine Störung. Ein Gewitter im Kopf.</p>
+<p>Hier spürst du, wenn etwas nicht stimmt.</p>
+
+    <h2>Evolution · 27</h2>
+<p>Die Matrix verändert sich. Neue Muster entstehen.</p>
+<p>Hier entscheidest du: schlafen, tanzen, resetten, leben.</p>
+
+    <h2>Nevada · 243</h2>
+<p>Der Kanal. Die Wüste. Der direkte Weg. Keine Ablenkung.</p>
+<p>Hier fließt deine Arbeitsenergie wie ein heißer Wind.</p>
+    <div id="iki-romance" style="
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#000;
+  border-top:2px solid #7dd3fc;
+  padding:20px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  z-index:99999;
+">
+</div>
+
+<style>
+  .iki-rom-btn {
+    background:#0b1220;
+    color:#7dd3fc;
+    border:1px solid #1f2937;
+    padding:10px 16px;
+    font-size:15px;
+    cursor:pointer;
+    border-radius:6px;
+    transition:all .2s;
+  }
+  .iki-rom-btn:hover {
+    background:#12263a;
+    color:#a8e8ff;
+    transform:scale(1.05);
+  }
+</style>
+
+<script type="module">
+import { SWITCHES } from "./SETI.js";
+
+const box = document.getElementById("iki-romance");
+
+// Buttons generieren
+function renderSwitches() {
+  SWITCHES.forEach(sw => {
+    const btn = document.createElement("button");
+    btn.className = "iki-rom-btn";
+    btn.textContent = sw.name;
+
+    btn.onclick = () => handleSwitch(sw);
+
+    box.appendChild(btn);
+  });
+}
+
+// Klick‑Logik
+function handleSwitch(sw) {
+  const result = sw.run();
+
+  if (result === false) {
+    console.log("Schalter konnte nicht greifen:", sw.name);
+    return;
+  }
+
+  const msg = `${sw.name}\n\n${sw.desc}\n\nÜbernehmen?`;
+
+  if (confirm(msg)) {
+    console.log("Übernommen:", sw.name);
+  } else {
+    console.log("Weiter suchen…");
+  }
+}
+
+// Start
+renderSwitches();
+</script>
+
+XXhardwareXX  
+
+    
+    
 <style>
     body {
         margin: 0;
